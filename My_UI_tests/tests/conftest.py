@@ -12,3 +12,4 @@ actions = ActionChains(driver)
 def web_driver_setup_teardown():
     driver.get('http://uitestingplayground.com/')
     driver.maximize_window()
+

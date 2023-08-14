@@ -22,3 +22,23 @@ class Checking():
         token = json.loads(response.text)
         assert list(token) == expected_value
         print("Все поля присутсвуют")
+
+    """Метод для проверки значений обязательных полей в ответе запроса"""
+
+    @staticmethod
+    def check_json_value(response: Response, field_name, expected_value):
+        check = response.json()
+        check_info = check.get(field_name)
+        assert check_info == expected_value
+        print(field_name + " верен")
+
+    """Метод для проверки значений обязательных полей в ответе запроса"""
+
+    @staticmethod
+    def check_json_search_word_in_value(response: Response, field_name, search_word):
+        check = response.json()
+        check_info = check.get(field_name)
+        if search_word in check_info:
+            print("Слово " + search_word + " присутсвует")
+        else:
+            print("Слово " + search_word + " отсутсвует")
